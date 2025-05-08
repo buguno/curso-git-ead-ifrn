@@ -1,0 +1,77 @@
+Bruno de Souza Bezerra
+
+# Clone o repositório original
+git clone https://gitlab.com/mizael.cortez/curso-branchs-ifrn-ead.git
+
+# Remove o controle do Git existente
+rm -rf .git
+
+# Inicia um novo repositório Git
+git init
+
+# Adiciona todos os arquivos
+git add *
+
+# Faz o primeiro commit
+git commit -m "first commit"
+
+# Renomeia a branch principal para 'master'
+git branch -M master
+
+# Adiciona o repositório remoto do GitHub
+git remote add origin https://github.com/buguno/curso-git-ead-ifrn.git
+
+# Envia para o repositório remoto
+git push -u origin master
+
+# Cria arquivo texto.txt com Lorem ipsum (comando Unix)
+echo "Lorem ipsum" > texto.txt
+
+# Faz commit e envia a alteração
+git add texto.txt
+git commit -m "creating file"
+git push
+
+# Cria uma nova branch a partir da master
+git checkout -b feature-1
+
+# Altera o arquivo texto.txt (substitui todo o conteúdo)
+echo "Habemus papam" > texto.txt
+
+# Faz commit e envia a branch
+git add texto.txt
+git commit -m "refactor(texto): changing content file"
+git push -u origin feature-1
+
+# Volta para a branch master
+git checkout master
+
+# Altera o arquivo texto.txt novamente (conflitando com feature-1)
+echo "Lorem ipsum dolor sit amet" > texto.txt
+
+# Faz commit e envia
+git add texto.txt
+git commit -m "refactor(texto): changing content file"
+git push
+
+# Faz o merge da feature-1 (resolve conflitos)
+git merge feature-1
+# (Resolve manualmente os conflitos no texto.txt)
+git add texto.txt
+git commit -m "Merge pull request #1 from buguno/feature-1"
+git push
+
+# Cria uma nova branch a partir da master
+git checkout -b add-comandos
+
+# Cria o arquivo comandos.txt
+touch comandos.txt
+
+# Adiciona o arquivo depois de editado com os comandos
+git add comandos.txt
+
+# Adiciona mensagem de commit
+git commit -m "feat(comandos): creating file with git commands"
+
+# Sobe o arquivo para a origin
+git push -u origin add-comandos
